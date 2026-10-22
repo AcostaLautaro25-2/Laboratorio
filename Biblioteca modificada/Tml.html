@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre historias, explora géneros literarios y encuentra tu próxima lectura en El Rincón de los Sueños.">
+    <title>El Rincón de los Sueños | Biblioteca</title>
+    <link rel="stylesheet" href="stbiblio.css">
+    <script src="Biblio.js" defer></script>
+</head>
+<body>
+    <header class="encabezado">
+        <a class="logo-contenedor" href="#" aria-label="Volver al inicio">
+            <span class="logo-icono" aria-hidden="true">📖</span>
+            <span class="logo-texto">
+                <span class="marca-superior">BIBLIOTECA LITERARIA</span>
+                <span class="titulo-principal">El Rincón de los Sueños</span>
+            </span>
+        </a>
+        <p class="subtitulo">Tu próxima gran aventura literaria comienza aquí.</p>
+    </header>
+
+    <nav class="barra-navegacion" aria-label="Navegación principal">
+        <button id="btnIntroduccion" class="boton boton-secundario" type="button">
+            Nuestra biblioteca
+        </button>
+        <button id="btnGeneros" class="boton boton-secundario" type="button"
+                aria-expanded="false" aria-controls="menuGeneros">
+            Explorar géneros <span aria-hidden="true">⌄</span>
+        </button>
+        <button id="btnFavoritos" class="boton boton-secundario" type="button">
+            ♥ Favoritos <span id="contadorFavoritos">0</span>
+        </button>
+
+        <div id="menuGeneros" class="menu-desplegable" hidden>
+            <button type="button" data-genre="Todos">Todos los géneros</button>
+            <button type="button" data-genre="Policial">Policial</button>
+            <button type="button" data-genre="Novela">Novela</button>
+            <button type="button" data-genre="Fantasía">Fantasía</button>
+            <button type="button" data-genre="Poesía">Poesía</button>
+            <button type="button" data-genre="Teatro">Teatro</button>
+            <button type="button" data-genre="Psicología">Psicología</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" aria-labelledby="tituloHero">
+            <div class="hero-contenido">
+                <p class="etiqueta">UN UNIVERSO ENTRE PÁGINAS</p>
+                <h1 id="tituloHero">Cada libro abre una puerta a otro mundo.</h1>
+                <p>
+                    Encuentra historias que te hagan pensar, mundos que te sorprendan
+                    y personajes que recuerdes mucho después de cerrar el libro.
+                </p>
+                <button id="btnRecomendar" class="boton boton-principal" type="button">
+                    Recomiéndame un libro
+                </button>
+            </div>
+            <div class="hero-decoracion" aria-hidden="true">✦</div>
+        </section>
+
+        <section id="coleccion" class="seccion-contenedor" aria-labelledby="tituloColeccion">
+            <div class="encabezado-seccion">
+                <div>
+                    <p class="etiqueta">EL CATÁLOGO</p>
+                    <h2 id="tituloColeccion">Encuentra tu próxima lectura</h2>
+                    <p class="texto-secundario">Explora los libros disponibles en nuestra selección.</p>
+                </div>
+            </div>
+
+            <div class="herramientas-catalogo">
+                <label class="buscador" for="busquedaLibros">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="busquedaLibros" type="search"
+                           placeholder="Buscar por título, autor o género..."
+                           autocomplete="off">
+                    <button id="btnLimpiarBusqueda" type="button"
+                            aria-label="Limpiar búsqueda" title="Limpiar búsqueda">×</button>
+                </label>
+
+                <label class="selector-genero" for="filtroGenero">
+                    <span>Género:</span>
+                    <select id="filtroGenero">
+                        <option value="Todos">Todos</option>
+                        <option value="Policial">Policial</option>
+                        <option value="Novela">Novela</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Poesía">Poesía</option>
+                        <option value="Teatro">Teatro</option>
+                        <option value="Psicología">Psicología</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="estado-catalogo">
+                <p id="resultadoBusqueda" aria-live="polite">Mostrando todos los libros.</p>
+                <button id="btnRestablecer" class="enlace-boton" type="button">
+                    Restablecer filtros
+                </button>
+            </div>
+
+            <div id="galeriaLibros" class="galeria-libros">
+                <article class="tarjeta-libro"
+                    data-id="libro-1" data-title="El misterio de la casa antigua"
+                    data-author="Clara Montes" data-genre="Policial"
+                    data-description="Una investigadora llega a una mansión donde cada habitante oculta una parte de la verdad. Las pistas parecen inconexas, hasta que un pequeño detalle cambia toda la investigación."
+                    data-color="vino">
+                    <div class="portada portada-vino" aria-hidden="true">
+                        <span class="portada-simbolo">⌕</span>
+                        <span class="portada-tipo">MISTERIO</span>
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <span class="genero-etiqueta">Policial</span>
+                        <h3>El misterio de la casa antigua</h3>
+                        <p class="autor">Clara Montes</p>
+                        <p class="descripcion-corta">Una mansión, secretos y una investigación que no es lo que parece.</p>
+                        <div class="acciones-libro">
+                            <button class="boton boton-pequeno boton-detalles" type="button">Ver ficha</button>
+                            <button class="boton-favorito" type="button" data-favorite="libro-1"
+                                    aria-label="Añadir a favoritos" aria-pressed="false">♡</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-libro"
+                    data-id="libro-2" data-title="El jardín de los recuerdos"
+                    data-author="Lucía Ferrer" data-genre="Novela"
+                    data-description="Al regresar a su pueblo natal, una joven descubre cartas olvidadas en el jardín de su abuela. Cada carta le revela una historia familiar y una decisión que aún puede cambiar su presente."
+                    data-color="verde">
+                    <div class="portada portada-verde" aria-hidden="true">
+                        <span class="portada-simbolo">❧</span>
+                        <span class="portada-tipo">RECUERDOS</span>
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <span class="genero-etiqueta">Novela</span>
+                        <h3>El jardín de los recuerdos</h3>
+                        <p class="autor">Lucía Ferrer</p>
+                        <p class="descripcion-corta">Una vuelta a casa, cartas antiguas y secretos familiares.</p>
+                        <div class="acciones-libro">
+                            <button class="boton boton-pequeno boton-detalles" type="button">Ver ficha</button>
+                            <button class="boton-favorito" type="button" data-favorite="libro-2"
+                                    aria-label="Añadir a favoritos" aria-pressed="false">♡</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-libro"
+                    data-id="libro-3" data-title="El reino de las estrellas"
+                    data-author="Mateo Soler" data-genre="Fantasía"
+                    data-description="Una aprendiz de cartógrafa descubre que las estrellas forman un mapa que cambia cada noche. Para salvar su reino, tendrá que recorrer lugares que no aparecen en ningún mapa humano."
+                    data-color="azul">
+                    <div class="portada portada-azul" aria-hidden="true">
+                        <span class="portada-simbolo">✦</span>
+                        <span class="portada-tipo">FANTASÍA</span>
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <span class="genero-etiqueta">Fantasía</span>
+                        <h3>El reino de las estrellas</h3>
+                        <p class="autor">Mateo Soler</p>
+                        <p class="descripcion-corta">Un mapa imposible conduce a una aventura más allá del cielo.</p>
+                        <div class="acciones-libro">
+                            <button class="boton boton-pequeno boton-detalles" type="button">Ver ficha</button>
+                            <button class="boton-favorito" type="button" data-favorite="libro-3"
+                                    aria-label="Añadir a favoritos" aria-pressed="false">♡</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-libro"
+                    data-id="libro-4" data-title="Versos para días grises"
+                    data-author="Elena Prado" data-genre="Poesía"
+                    data-description="Una colección de poemas sobre la nostalgia, los pequeños comienzos y la belleza que a veces pasa desapercibida. Una lectura breve para detenerse y mirar el mundo de otra manera."
+                    data-color="rosa">
+                    <div class="portada portada-rosa" aria-hidden="true">
+                        <span class="portada-simbolo">❋</span>
+                        <span class="portada-tipo">POESÍA</span>
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <span class="genero-etiqueta">Poesía</span>
+                        <h3>Versos para días grises</h3>
+                        <p class="autor">Elena Prado</p>
+                        <p class="descripcion-corta">Poemas para encontrar belleza incluso en los días difíciles.</p>
+                        <div class="acciones-libro">
+                            <button class="boton boton-pequeno boton-detalles" type="button">Ver ficha</button>
+                            <button class="boton-favorito" type="button" data-favorite="libro-4"
+                                    aria-label="Añadir a favoritos" aria-pressed="false">♡</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-libro"
+                    data-id="libro-5" data-title="La última función"
+                    data-author="Tomás Rivas" data-genre="Teatro"
+                    data-description="Durante la noche de estreno de una obra, los conflictos del escenario comienzan a confundirse con los de la compañía. Una pieza teatral sobre las apariencias, el orgullo y las verdades que nadie quiere decir."
+                    data-color="dorado">
+                    <div class="portada portada-dorada" aria-hidden="true">
+                        <span class="portada-simbolo">✧</span>
+                        <span class="portada-tipo">TEATRO</span>
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <span class="genero-etiqueta">Teatro</span>
+                        <h3>La última función</h3>
+                        <p class="autor">Tomás Rivas</p>
+                        <p class="descripcion-corta">Una compañía teatral descubre que el drama no termina en escena.</p>
+                        <div class="acciones-libro">
+                            <button class="boton boton-pequeno boton-detalles" type="button">Ver ficha</button>
+                            <button class="boton-favorito" type="button" data-favorite="libro-5"
+                                    aria-label="Añadir a favoritos" aria-pressed="false">♡</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-libro"
+                    data-id="libro-6" data-title="Pensar y comprender"
+                    data-author="Andrés Molina" data-genre="Psicología"
+                    data-description="Una introducción accesible a la memoria, las emociones y los hábitos cotidianos. Propone preguntas y ejercicios de reflexión para comprender mejor cómo pensamos y cómo tomamos decisiones."
+                    data-color="gris">
+                    <div class="portada portada-gris" aria-hidden="true">
+                        <span class="portada-simbolo">◎</span>
+                        <span class="portada-tipo">PSICOLOGÍA</span>
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <span class="genero-etiqueta">Psicología</span>
+                        <h3>Pensar y comprender</h3>
+                        <p class="autor">Andrés Molina</p>
+                        <p class="descripcion-corta">Ideas sencillas para explorar la mente y los hábitos humanos.</p>
+                        <div class="acciones-libro">
+                            <button class="boton boton-pequeno boton-detalles" type="button">Ver ficha</button>
+                            <button class="boton-favorito" type="button" data-favorite="libro-6"
+                                    aria-label="Añadir a favoritos" aria-pressed="false">♡</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div id="sinResultados" class="sin-resultados" hidden>
+                <span aria-hidden="true">⌕</span>
+                <h3>No encontramos libros</h3>
+                <p>Prueba con otro título, autor o género.</p>
+                <button id="btnLimpiarSinResultados" class="boton boton-principal" type="button">
+                    Ver todos los libros
+                </button>
+            </div>
+        </section>
+
+        <section id="genero" class="panel-genero">
+            <p class="etiqueta">DEJA QUE LA CURIOSIDAD TE GUÍE</p>
+            <h2>¿Qué te gustaría leer hoy?</h2>
+            <p>Elige un género y descubre qué historias te esperan.</p>
+            <div class="botones-generos">
+                <button type="button" data-genre="Policial">Misterio</button>
+                <button type="button" data-genre="Fantasía">Fantasía</button>
+                <button type="button" data-genre="Novela">Novelas</button>
+                <button type="button" data-genre="Poesía">Poesía</button>
+                <button type="button" data-genre="Teatro">Teatro</button>
+                <button type="button" data-genre="Psicología">Psicología</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>El Rincón de los Sueños</p>
+        <p>Un lugar para quienes encuentran mundos entre páginas.</p>
+        <small>© <span id="anioActual"></span> · Proyecto de biblioteca</small>
+    </footer>
+
+    <dialog id="dialogIntroduccion" class="ventana">
+        <div class="contenido-dialogo">
+            <button id="btnCerrarIntroduccion" class="cerrar-dialogo"
+                    type="button" aria-label="Cerrar ventana">×</button>
+            <span class="icono-dialogo" aria-hidden="true">📚</span>
+            <p class="etiqueta">BIENVENIDO</p>
+            <h2>Una biblioteca para dejar volar la imaginación</h2>
+            <p>
+                En El Rincón de los Sueños creemos que cada historia tiene algo que contar.
+                Explora el catálogo, guarda tus libros favoritos y encuentra tu próxima lectura.
+            </p>
+            <button id="btnEntrar" class="boton boton-principal" type="button">
+                Explorar biblioteca
+            </button>
+        </div>
+    </dialog>
+
+    <dialog id="dialogLibro" class="ventana">
+        <div class="contenido-dialogo contenido-ficha">
+            <button id="btnCerrarLibro" class="cerrar-dialogo"
+                    type="button" aria-label="Cerrar ficha">×</button>
+            <div id="detallePortada" class="portada portada-detalle" aria-hidden="true"></div>
+            <span id="detalleGenero" class="genero-etiqueta"></span>
+            <h2 id="detalleTitulo"></h2>
+            <p id="detalleAutor" class="autor"></p>
+            <p id="detalleDescripcion"></p>
+            <div class="acciones-ficha">
+                <button id="btnFavoritoDetalle" class="boton boton-principal" type="button">
+                    ♡ Añadir a favoritos
+                </button>
+                <button id="btnCerrarFicha" class="boton boton-secundario" type="button">
+                    Volver al catálogo
+                </button>
+            </div>
+        </div>
+    </dialog>
+
+    <div id="notificacion" class="notificacion" role="status"
+         aria-live="polite" hidden></div>
+</body>
+</html>
