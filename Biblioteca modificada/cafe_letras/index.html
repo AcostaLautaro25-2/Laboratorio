@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Café & Letras: libros, café y ofertas en un rincón nocturno para lectores.">
+    <title>Café &amp; Letras | Libros, café y ofertas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="nav" aria-label="Principal">
+        <a class="logo" href="#inicio">Café <span>&amp;</span> Letras</a>
+        <ul>
+            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#libros">Libros <span class="contador" id="contador" hidden></span></a></li>
+            <li><a href="#menu">Menú</a></li>
+        </ul>
+        <button id="btn-cambiar-tema" class="tema" type="button" aria-pressed="false"
+                aria-label="Cambiar a modo claro">☾</button>
+    </nav>
+
+    <main>
+        <!-- CAPA 1: INICIO -->
+        <div class="vista" id="vista-inicio">
+            <header class="encabezado">
+                <div>
+                    <h1>Café <span>&amp;</span> Letras</h1>
+                    <p class="eslogan">Un buen café, una historia y un momento para vos.</p>
+                    <a class="aviso" href="#ofertas">Comprando ciertos libros, te llevás un café gratis</a>
+                </div>
+                <img class="hero-img" src="Imagenes/cafe y libros.jpg" width="800" height="520"
+                     alt="Una taza de café humeante sobre una pila de libros, bajo la luna">
+            </header>
+
+            <section class="tarjeta" aria-labelledby="titulo-tarjeta">
+                <div class="adorno" aria-hidden="true">✦</div>
+                <h2 id="titulo-tarjeta">La frase de esta noche</h2>
+                <blockquote class="frase">
+                    <span class="comilla" aria-hidden="true">“</span>
+                    <p id="texto-frase" aria-live="polite">No hay noche tan larga que impida el regreso de la luz.</p>
+                </blockquote>
+                <p id="autor-frase" class="autor-frase">— Frase popular</p>
+                <div class="acciones">
+                    <button id="btn-nueva-frase" class="boton boton-principal" type="button">
+                        <span aria-hidden="true">✧</span> Nueva frase inspiradora
+                    </button>
+                </div>
+            </section>
+
+            <section class="explorar" aria-labelledby="t-explorar">
+                <h2 id="t-explorar">¿Qué se te antoja?</h2>
+                <div class="tiles">
+                    <a class="tile" href="#libros"><img src="Imagenes/cafe y libros.jpg" width="400" height="260" alt="">
+                        <h3>Libros</h3><p>Catálogo para leer acá o llevar</p></a>
+                    <a class="tile" href="#menu"><img src="Imagenes/Menú.jpg" width="400" height="260" alt="">
+                        <h3>Menú</h3><p>Cafés, dulces y salados</p></a>
+                    <a class="tile" href="#ofertas"><img src="Imagenes/Ofertas.jpg" width="400" height="260" alt="">
+                        <h3>Ofertas</h3><p>Libros que te regalan un café</p></a>
+                </div>
+            </section>
+        </div>
+
+        <!-- CAPA 2: LIBROS -->
+        <section class="seccion vista" id="vista-libros" aria-labelledby="t-libros" hidden>
+            <a class="volver" href="#inicio">‹ Volver al inicio</a>
+            <img class="banner" src="img/tile-libros.svg" alt="">
+            <h2 id="t-libros">Catálogo de libros</h2>
+            <p class="intro">Para leer acá con un café o llevarte a casa.</p>
+            <form class="buscador" id="form-libros" role="search">
+                <div class="campo">
+                    <label class="solo-lectores" for="buscar-libros">Buscar libros</label>
+                    <input type="search" id="buscar-libros" placeholder="Buscar por título, autor o género" autocomplete="off">
+                    <button class="limpiar" id="limpiar-libros" type="button" aria-label="Borrar búsqueda" hidden>✕</button>
+                </div>
+                <button class="boton boton-principal" type="submit">Buscar</button>
+            </form>
+            <p class="resultados" id="resultados-libros" aria-live="polite"></p>
+            <div class="filtros" id="filtros-libros" role="group" aria-label="Filtrar por género"></div>
+            <div class="grilla grilla-libros" id="lista-libros"></div>
+
+            <aside class="seleccion" aria-labelledby="t-seleccion">
+                <h3 id="t-seleccion">Tu selección</h3>
+                <ul id="lista-seleccion"></ul>
+                <p class="total" id="total-seleccion"></p>
+                <div id="premios" aria-live="polite"></div>
+                <button class="boton boton-secundario" id="btn-vaciar" type="button">Vaciar selección</button>
+            </aside>
+        </section>
+
+        <!-- CAPA 3: MENÚ -->
+        <section class="seccion vista" id="vista-menu" aria-labelledby="t-menu" hidden>
+            <a class="volver" href="#inicio">‹ Volver al inicio</a>
+            <img class="banner" src="img/tile-menu.svg" alt="">
+            <h2 id="t-menu">Menú</h2>
+            <p class="intro">Todo se prepara en el momento.</p>
+            <form class="buscador" id="form-menu" role="search">
+                <div class="campo">
+                    <label class="solo-lectores" for="buscar-menu">Buscar en el menú</label>
+                    <input type="search" id="buscar-menu" placeholder="Buscar café, medialuna, tostado…" autocomplete="off">
+                    <button class="limpiar" id="limpiar-menu" type="button" aria-label="Borrar búsqueda" hidden>✕</button>
+                </div>
+                <button class="boton boton-principal" type="submit">Buscar</button>
+            </form>
+            <p class="resultados" id="resultados-menu" aria-live="polite"></p>
+            <div class="filtros" id="filtros-menu" role="group" aria-label="Categorías del menú"></div>
+            <ul class="carta" id="lista-menu"></ul>
+        </section>
+
+        <!-- CAPA 4: OFERTAS -->
+        <section class="seccion vista" id="vista-ofertas" aria-labelledby="t-ofertas" hidden>
+            <a class="volver" href="#inicio">‹ Volver al inicio</a>
+            <img class="banner" src="img/tile-ofertas.svg" alt="">
+            <h2 id="t-ofertas">Ofertas</h2>
+            <p class="intro">Sumá los libros de cada oferta a tu selección y desbloqueá el premio.</p>
+            <div class="grilla grilla-ofertas" id="lista-ofertas"></div>
+            <p class="ir-libros"><a class="boton boton-principal" href="#libros">Elegir libros</a></p>
+        </section>
+    </main>
+
+    <div class="gatito-paseante" id="gatito-paseante" aria-hidden="true" data-pose="inicio">
+        <span class="gatito-estela">✦</span>
+        <span class="gatito" id="gatito">🐈‍⬛</span>
+        <span class="gatito-saludo">¡Miau!</span>
+    </div>
+
+    <footer class="pie">
+        <p>Hecho con café, libros y un poquito de magia.</p>
+        <p class="pie-pequeno">Los precios y ofertas son de ejemplo. Editalos en script.js.</p>
+    </footer>
+</body>
+</html>
